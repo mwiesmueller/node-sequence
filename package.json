@@ -1,6 +1,6 @@
 {
   "name": "node-sequence",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A node module where provides to run js functions in a sequence.",
   "main": "lib/index.js",
   "scripts": {
