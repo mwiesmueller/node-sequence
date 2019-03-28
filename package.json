@@ -4,11 +4,19 @@
   "description": "A node module where provides to run js functions in a sequence.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "gulp"
   },
   "author": "Martin Wiesmüller",
   "license": "MIT",
   "dependencies": {
     "require-dir": "^1.2.0"
+  },
+  "devDependencies": {
+    "assertthat": "0.10.3",
+    "gulp": "3.9.1",
+    "gulp-coverage": "0.3.38",
+    "gulp-eslint": "4.0.0",
+    "gulp-mocha": "4.3.1",
+    "gulp-shell": "0.6.3"
   }
 }
