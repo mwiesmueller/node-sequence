@@ -18,7 +18,7 @@ You can work with node-sequence by async/await or Promise.
 const sequence = require('node-sequence');
 
 (async () => {
-  await sequence(seqDef, library);
+  await sequence(seqDef, library, base);
 })();
 ```
 
@@ -33,6 +33,8 @@ This argument must be of type object-array. Follow properties are valid:
 * args (array): Describes the arguments to run the function in this part.
 
 If you want to use the response from the previous part, you can define the `%RES%` placeholder in an argument. When the previous response is of type object, you can use this placeholder also in the deep. Ex: `%RES%.foo.bar`
+
+If you want to use a base object where are handle in the complete sequence, it's possible to declare the `base` property in function call. The object is reachable via `%BASE%` placeholder in the arguments. To use this placeholder in the deep is also possible. (Ex. `%BASE%.foo.bar`)
 
 #### Insert Library (library):
 
