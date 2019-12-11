@@ -25,6 +25,11 @@ const seq3 = [
   { method: 'lib.writeFileSync', await: true, args: [ './base.txt', '%BASE%.foo.bar', 'utf8' ]}
 ];
 
+const seq4 = [
+  { method: 'console.log', await: false, args: [ '%BASE%' ]},
+  { method: 'lib.writeFileSync', await: true, args: [ './result.json', { text: '%BASE%.foo.bar' }, 'utf8' ]}
+];
+
 describe('node-sequence...', () => {
   it('... is of type function', (done) => {
     assert.that(sequence).is.ofType('function');
@@ -118,6 +123,27 @@ describe('node-sequence...', () => {
 
         assert.that(res).is.true();
         assert.that(file).is.equalTo('BaseTest');
+        done();
+      } catch (err) {
+        throw err;
+      }
+    })();
+  });
+
+  it('... resolves true when process is done with argument as object (JSON)', (done) => {
+    (async () => {
+      try {
+        const obj = {
+          foo: {
+            bar: 'BaseTest'
+          }
+        };
+
+        const res = await sequence(seq4, require('fs'), obj);
+
+        await fs.readFileSync('./base.txt', 'utf8');
+
+        assert.that(res).is.true();
         done();
       } catch (err) {
         throw err;
